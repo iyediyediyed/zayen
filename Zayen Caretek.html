@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic Image Gallery</title>
+    <style>
+        /* Root Variables */
+        :root {
+            --primary-bg: #0d0d0d;
+            --header-bg: rgba(0, 0, 0, 0.8);
+            --header-color: #0ff;
+            --border-color: #0ff;
+            --shadow-color: rgba(0, 255, 255, 0.4);
+        }
+
+        /* Reset default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Futuristic Animated Background */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(-45deg, #0d0d0d, #222, #0ff, #00f);
+            background-size: 400% 400%;
+            animation: backgroundShift 10s infinite linear;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Floating Particle Effect */
+        body::before,
+        body::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.15) 10%, transparent 70%);
+            animation: floatingParticles 15s infinite alternate;
+        }
+
+        body::after {
+            animation-duration: 18s;
+        }
+
+        /* Header */
+        header {
+            background: var(--header-bg);
+            color: var(--header-color);
+            padding: 20px;
+            font-size: 1.8em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 2px solid var(--border-color);
+            box-shadow: 0 0 10px var(--shadow-color);
+        }
+
+        /* Gallery container */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            padding: 20px;
+            justify-items: center;
+        }
+
+        /* Image Wrapper */
+        .image {
+            width: 250px;
+            height: 250px;
+            border: 3px solid var(--border-color);
+            box-shadow: 0 0 15px var(--shadow-color);
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .image:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 25px var(--shadow-color);
+        }
+
+        /* Lightbox (Zoom Effect) */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+
+        .lightbox:target {
+            display: flex;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 30px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Background Animation */
+        @keyframes backgroundShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating Particles Animation */
+        @keyframes floatingParticles {
+            0% { transform: translateY(-10px) scale(1.1); opacity: 0.3; }
+            100% { transform: translateY(10px) scale(1.2); opacity: 0.5; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>Zayen Caretek</header>
+
+    <div class="gallery">
+        <a href="#img1" class="image">
+            <img src="https://via.placeholder.com/300" alt="Gallery Image 1">
+        </a>
+        <a href="#img2" class="image">
+            <img src="https://via.placeholder.com/300" alt="Gallery Image 2">
+        </a>
+        <a href="#img3" class="image">
+            <img src="https://via.placeholder.com/300" alt="Gallery Image 3">
+        </a>
+        <a href="#img4" class="image">
+            <img src="https://via.placeholder.com/300" alt="Gallery Image 4">
+        </a>
+        <a href="#img5" class="image">
+            <img src="https://via.placeholder.com/300" alt="Gallery Image 5">
+        </a>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="img1" class="lightbox">
+        <a href="#" class="close">&times;</a>
+        <img src="image1.jpg" alt="Gallery Image 1">
+    </div>
+    <div id="img2" class="lightbox">
+        <a href="#" class="close">&times;</a>
+        <img src="https://via.placeholder.com/300" alt="Gallery Image 2">
+    </div>
+    <div id="img3" class="lightbox">
+        <a href="#" class="close">&times;</a>
+        <img src="https://via.placeholder.com/300" alt="Gallery Image 3">
+    </div>
+    <div id="img4" class="lightbox">
+        <a href="#" class="close">&times;</a>
+        <img src="https://via.placeholder.com/300" alt="Gallery Image 4">
+    </div>
+    <div id="img5" class="lightbox">
+        <a href="#" class="close">&times;</a>
+        <img src="https://via.placeholder.com/300" alt="Gallery Image 5">
+    </div>
+
+</body>
+</html>
